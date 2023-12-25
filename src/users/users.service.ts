@@ -14,7 +14,7 @@ export class UsersService {
     return result;
   }
 
-  async findAll(): Promise<any> {
+  async findAll() {
     const users = this.client.send('findAllUsers', {});
     return users;
   }
