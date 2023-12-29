@@ -36,8 +36,7 @@ export class UsersController {
   async update(
     @Param('id') id: number,
     @Body() updateUserDto: UpdateUserDto,
-  ): Promise<any> {
-    this.usersService.update(id, updateUserDto);
+  ): Promise<object> {
     return this.usersService.update(id, updateUserDto);
   }
 
