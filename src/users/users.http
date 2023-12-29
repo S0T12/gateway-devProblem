@@ -12,7 +12,7 @@ Content-Type: application/json
 ### Get All
 GET http://localhost:3000/users
 
-### Get user by username
+### Get user by ID
 GET http://localhost:3000/users/1
 
 ### Update user
@@ -20,7 +20,9 @@ PATCH http://localhost:3000/users/1
 Content-Type: application/json
 
 {
-  "name": "Updated John"
+  "name": "Updated",
+  "username": "johhhhhhhhhhhhhhhhn",
+  "email": "helloWorld@gmail.com"
 }
 
 ### Delete user
