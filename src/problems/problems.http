@@ -1,0 +1,28 @@
+### Create problem
+POST http://localhost:3000/problems
+Content-Type: application/json
+
+{
+    "title": "hello",
+    "description": "world",
+    "creator": "john_doe"
+}
+
+### Get All
+GET http://localhost:3000/problems
+
+### Get problem by ID
+GET http://localhost:3000/problems/1
+
+### Update problem 
+PATCH http://localhost:3000/problems/1
+Content-Type: application/json
+
+{
+  "name": "Updated",
+  "username": "johhhhhhhhhhhhhhhhn",
+  "email": "helloWorld@gmail.com"
+}
+
+### Delete problem
+DELETE http://localhost:3000/problems/1
