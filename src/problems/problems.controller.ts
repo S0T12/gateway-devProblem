@@ -10,6 +10,7 @@ import {
 import { ProblemsService } from './problems.service';
 import { CreateProblemDto } from './dto/create-problem.dto';
 import { UpdateProblemDto } from './dto/update-problem.dto';
+import { ObjectId } from 'mongodb';
 
 @Controller('problems')
 export class ProblemsController {
@@ -26,8 +27,8 @@ export class ProblemsController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.problemsService.findOne(+id);
+  findOne(@Param('id') id: ObjectId) {
+    return this.problemsService.findOne(id);
   }
 
   @Patch(':id')

@@ -2,6 +2,7 @@ import { Inject, Injectable } from '@nestjs/common';
 import { CreateProblemDto } from './dto/create-problem.dto';
 import { UpdateProblemDto } from './dto/update-problem.dto';
 import { ClientProxy } from '@nestjs/microservices';
+import { ObjectId } from 'mongodb';
 
 @Injectable()
 export class ProblemsService {
@@ -19,7 +20,7 @@ export class ProblemsService {
     return problems;
   }
 
-  findOne(id: number) {
+  findOne(id: ObjectId) {
     const problem = this.client.send('findOneProblem', id);
     return problem;
   }
