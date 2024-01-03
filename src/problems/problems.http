@@ -12,17 +12,16 @@ Content-Type: application/json
 GET http://localhost:3000/problems
 
 ### Get problem by ID
-GET http://localhost:3000/problems/1
+GET http://localhost:3000/problems/6595c0f4bf36e31891edf1bb
 
 ### Update problem 
-PATCH http://localhost:3000/problems/1
+PATCH http://localhost:3000/problems/6595c0f4bf36e31891edf1bb
 Content-Type: application/json
 
 {
-  "name": "Updated",
-  "username": "johhhhhhhhhhhhhhhhn",
-  "email": "helloWorld@gmail.com"
+  "title": "Updated",
+  "description": "johhhhhhhhhhhhhhhhn"
 }
 
 ### Delete problem
-DELETE http://localhost:3000/problems/1
+DELETE http://localhost:3000/problems/6595c0f4bf36e31891edf1bb
