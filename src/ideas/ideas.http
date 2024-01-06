@@ -1,0 +1,28 @@
+### Create idea
+POST http://localhost:3000/ideas
+Content-Type: application/json
+
+{
+    "title": "hello",
+    "description": "world",
+    "creator": "john_doe",
+    "problemID": "6595c53ae8dc64103ac3d536"
+}
+
+### Get All
+GET http://localhost:3000/ideas
+
+### Get idea by ID
+GET http://localhost:3000/ideas/6599d39f73af24af7b9a4a3c
+
+### Update idea 
+PATCH http://localhost:3000/ideas/6599d39f73af24af7b9a4a3c
+Content-Type: application/json
+
+{
+  "title": "Updated",
+  "description": "johhhhhhhhhhhhhhhhn"
+}
+
+### Delete idea
+DELETE http://localhost:3000/ideas/6599d39f73af24af7b9a4a3c
