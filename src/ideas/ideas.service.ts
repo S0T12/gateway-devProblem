@@ -63,7 +63,8 @@ export class IdeasService implements OnApplicationShutdown {
       this.logger.warn('Client is not connected!');
       return of();
     }
-    return this.client.send('updateIdea', { id, updateIdeaDto });
+    const objectId: ObjectId = new ObjectId(id);
+    return this.client.send('updateIdea', { objectId, updateIdeaDto });
   }
 
   remove(id: ObjectId): Observable<object> {
@@ -71,7 +72,7 @@ export class IdeasService implements OnApplicationShutdown {
       this.logger.warn('Client is not connected!');
       return of();
     }
-    return this.client.send<ObjectId>('removeIdea', id);
+    return this.client.send('removeIdea', id);
   }
 
   async onApplicationShutdown(signal?: string) {
