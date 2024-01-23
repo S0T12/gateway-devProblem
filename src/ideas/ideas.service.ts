@@ -14,13 +14,15 @@ import { Observable, of } from 'rxjs';
 export class IdeasService implements OnApplicationShutdown {
   private readonly logger = new Logger(IdeasService.name);
   private isConnected = false;
-  constructor(@Inject('IDEAS_SERVICE') private readonly client: ClientProxy) {
+  constructor(
+    @Inject('IDEAS_SERVICE') private readonly devClient: ClientProxy,
+  ) {
     this.connectToClient();
   }
 
   private async connectToClient() {
     try {
-      await this.client.connect();
+      await this.devClient.connect();
       this.isConnected = true;
       this.logger.log('Connected to the client successfully');
     } catch (error) {
@@ -36,7 +38,7 @@ export class IdeasService implements OnApplicationShutdown {
       this.logger.warn('Client is not connected!');
       return of();
     }
-    return this.client.send('createIdea', createIdeaDto);
+    return this.devClient.send('createIdea', createIdeaDto);
   }
 
   findAll(): Observable<object> {
@@ -44,7 +46,7 @@ export class IdeasService implements OnApplicationShutdown {
       this.logger.warn('Client is not connected!');
       return of();
     }
-    return this.client.send('findAllIdeas', {});
+    return this.devClient.send('findAllIdeas', {});
   }
 
   findOne(id: ObjectId): Observable<object> {
@@ -52,7 +54,7 @@ export class IdeasService implements OnApplicationShutdown {
       this.logger.warn('Client is not connected!');
       return of();
     }
-    return this.client.send('findOneIdea', id);
+    return this.devClient.send('findOneIdea', id);
   }
 
   update(
@@ -64,7 +66,7 @@ export class IdeasService implements OnApplicationShutdown {
       return of();
     }
     const objectId: ObjectId = new ObjectId(id);
-    return this.client.send('updateIdea', { objectId, updateIdeaDto });
+    return this.devClient.send('updateIdea', { objectId, updateIdeaDto });
   }
 
   remove(id: ObjectId): Observable<object> {
@@ -72,7 +74,7 @@ export class IdeasService implements OnApplicationShutdown {
       this.logger.warn('Client is not connected!');
       return of();
     }
-    return this.client.send('removeIdea', id);
+    return this.devClient.send('removeIdea', id);
   }
 
   async onApplicationShutdown(signal?: string) {
@@ -87,7 +89,7 @@ export class IdeasService implements OnApplicationShutdown {
 
   async close() {
     if (this.isConnected) {
-      await this.client.close();
+      await this.devClient.close();
       this.isConnected = false;
       this.logger.log('Client connection closed gracefully');
     }
